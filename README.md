@@ -1,2 +1,1 @@
-# -
-папка для загрузки работы с экзамена 
+https://www.dropbox.com/home?preview=NewWay.7z
