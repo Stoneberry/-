@@ -83,7 +83,7 @@ def name(html): # - название статьи
     name1 = re.sub('&raquo;', '»', clean_4)
     return name1
 
-def engname(html):
+def engname(html): # - mystem не работает с кириллицой, поэтому названия латиницей 
     regex = '<input type="hidden" class="link-to-share" id="link-to-share-[0-9]*?" value="http://noviput.info/stati/.*?/[0-9]*?-(.*?)"/>'
     a1=re.findall( regex, html, flags=re.U | re.DOTALL)
     name2=''.join(a1)
