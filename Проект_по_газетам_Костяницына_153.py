@@ -5,7 +5,7 @@ import os.path
 import csv
 
 def create():  # - создаем папки              
-    for i in range(2011, 2017):
+    for i in range(2015, 2017):
         for l in range(1, 13):
             z = 'Paper\\plain\\' + str(i) + '\\' + str(l)
             if os.path.exists(z):
@@ -17,7 +17,7 @@ def create():  # - создаем папки
     return
 
 def mystempapkaxml():
-    for i in range(2011, 2017):
+    for i in range(2015, 2017):
         for l in range(1, 13):
             z = 'Paper\\mystem-xml\\' + str(i) + '\\' + str(l)
             if os.path.exists(z):
@@ -29,7 +29,7 @@ def mystempapkaxml():
     return
 
 def mystempapkatxt():
-    for i in range(2011, 2017):
+    for i in range(2015, 2017):
         for l in range(1, 13):
             z = 'Paper\\mystem-plain\\' + str(i) + '\\' + str(l)
             if os.path.exists(z):
