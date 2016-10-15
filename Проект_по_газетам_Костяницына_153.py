@@ -1,3 +1,4 @@
+# сначала свою работу должна сделать эта программа, а потом уже вторая
 import re
 import os
 import urllib.request
@@ -41,7 +42,7 @@ def mystempapkatxt():
     return
 
 def file():
-    fw = open('C:\\Users\\Та\\Desktop\\mystem-3.0-win7-64bit\\Paper\\metadata.csv', 'w', encoding='utf-8')
+    fw = open('C:\\Users\\Та\\Desktop\\прога\\mystem-3.0-win7-64bit\\Paper\\metadata.csv', 'w', encoding='utf-8')
     fw.write('')
     fw.close()
     return fw
@@ -118,14 +119,14 @@ def cleaning(text): # - очищаем от ненужных символов
     return clean_6
 
 def filecreator( year1, month1, name2, clean_6): # - пишем в нужную папку 
-    fw = open('C:\\Users\\Та\\Desktop\\mystem-3.0-win7-64bit\\Paper\\plain\\' + year1 + '\\'+ month1 + '\\' + name2 + '.txt', 'w', encoding='utf-8')
+    fw = open('C:\\Users\\Та\\Desktop\\прога\\mystem-3.0-win7-64bit\\Paper\\plain\\' + year1 + '\\'+ month1 + '\\' + name2 + '.txt', 'w', encoding='utf-8')
     fw.write(clean_6)
     fw.close()
     return fw
 
 def csvfile(year1, month1, name2, authors, name1, data, cate, url): # - открывать через блокнот 
-    fw = open('C:\\Users\\Та\\Desktop\\mystem-3.0-win7-64bit\\Paper\\metadata.csv', 'a', encoding='utf-8')
-    path = 'C:\\Users\\Та\\Desktop\\mystem-3.0-win7-64bit\\Paper\\plain\\' + year1 + '\\'+ month1 + '\\' + name2 + '.txt'
+    fw = open('C:\\Users\\Та\\Desktop\\прога\\mystem-3.0-win7-64bit\\Paper\\metadata.csv', 'a', encoding='utf-8')
+    path = 'C:\\Users\\Та\\Desktop\\прога\\mystem-3.0-win7-64bit\\Paper\\plain\\' + year1 + '\\'+ month1 + '\\' + name2 + '.txt'
     row = '%s\t%s\t\t\t%s\t%s\tпублицистика\t\t\t%s\t\tнейтральный\tн-возраст\tн-уровень\tрайонная\t%s\tНовый путь\t\t%s\tгазета\tРоссия\tУдмуртская республика\tru'
     fw.write(row % (path, authors, name1, data, cate, url, year1)+'\n')
     fw.close()
@@ -135,21 +136,15 @@ def mystemxml(year1, month1):
     inp = "Paper" + os.sep + "plain" + os.sep + year1 + os.sep + month1
     lst = os.listdir(inp)
     for fl in lst:
-        os.system(r"C:\\Users\\Та\\Desktop\\mystem-3.0-win7-64bit\\mystem.exe " + inp + os.sep + fl + " Paper" + os.sep + "mystem-xml" + os.sep + year1 + os.sep + month1 + os.sep + fl + ' -cnid --format xml')
+        os.system(r"C:\\Users\\Та\\Desktop\\прога\\mystem-3.0-win7-64bit\\mystem.exe " + inp + os.sep + fl + " Paper" + os.sep + "mystem-xml" + os.sep + year1 + os.sep + month1 + os.sep + fl + ' -cnid --format xml')
     return
 
 def mystemtxt(year1, month1):
     inp = "Paper" + os.sep + "plain" + os.sep + year1 + os.sep + month1
     lst = os.listdir(inp)
     for fl in lst:
-        os.system(r"C:\\Users\\Та\\Desktop\\mystem-3.0-win7-64bit\\mystem.exe " + inp + os.sep + fl + " Paper" + os.sep + "mystem-plain" + os.sep + year1 + os.sep + month1 + os.sep + fl + ' -cnid --format text')
+        os.system(r"C:\\Users\\Та\\Desktop\\прога\\mystem-3.0-win7-64bit\\mystem.exe " + inp + os.sep + fl + " Paper" + os.sep + "mystem-plain" + os.sep + year1 + os.sep + month1 + os.sep + fl + ' -cnid --format text')
     return
-
-def new( year1, month1, name2, authors, name1, data, cate, url, clean_6):
-    fw = open('C:\\Users\\Та\\Desktop\\mystem-3.0-win7-64bit\\Paper\\plain\\' + year1 + '\\'+ month1 + '\\' + name2 + '.txt', 'w', encoding='utf-8')
-    fw.write('@au ' + authors + '\n' + '@ti ' + name1 + '\n' + '@da ' + data + '\n' + '@topic ' + cate + '\n' + '@url ' + url + '\n' + clean_6)
-    fw.close()
-    return fw
 
 def download_page(pageUrl):
     try:
@@ -169,10 +164,9 @@ def download_page(pageUrl):
     s = searchingtext(html)
     cl = cleaning(s)
     fl = filecreator(d, d1, n1, cl)
-    cs = csvfile( d, d1, n1, a, n, d2, c, l)
     my1 = mystemxml( d, d1)
     my2 = mystemtxt( d, d1)
-    nw = new( d, d1, n1, a, n, d2, c, l, cl)
+    cs = csvfile( d, d1, n1, a, n, d2, c, l)
 
 def fk():
     commonUrl = 'http://www.noviput.info/stati/'
@@ -187,4 +181,3 @@ if __name__=='__main__':
     mystempapkatxt()
     file()
     fk()
-
