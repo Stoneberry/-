@@ -117,19 +117,9 @@ def cleaning(text): # - очищаем от ненужных символов
     clean_6 = re.sub('&quot;', '"', clean_12)
     return clean_6
 
-def addinformation(clean_6, data, authors, name1, cate, url): # - добавляем нужную информацию
-    # @au имя автора (если автора нет, пишем Noname)
-    # @ti Название статьи
-    # @da дата в формате 12.02.2012
-    # @topic категория, если мы её можем найти на странице со статьёй
-    # @url URL, откуда мы скачали страницу
-    new_text = '@au ' + authors + '\n' + '@ti ' + name1 + '\n' + '@da ' + data + '\n' + '@topic ' + cate + '\n' + '@url ' + url + '\n' + clean_6
-    return new_text
-
-
-def filecreator( year1, month1, new_text, name2): # - пишем в нужную папку 
+def filecreator( year1, month1, name2, clean_6): # - пишем в нужную папку 
     fw = open('C:\\Users\\Та\\Desktop\\mystem-3.0-win7-64bit\\Paper\\plain\\' + year1 + '\\'+ month1 + '\\' + name2 + '.txt', 'w', encoding='utf-8')
-    fw.write(new_text)
+    fw.write(clean_6)
     fw.close()
     return fw
 
@@ -155,6 +145,12 @@ def mystemtxt(year1, month1):
         os.system(r"C:\\Users\\Та\\Desktop\\mystem-3.0-win7-64bit\\mystem.exe " + inp + os.sep + fl + " Paper" + os.sep + "mystem-plain" + os.sep + year1 + os.sep + month1 + os.sep + fl + ' -cnid --format text')
     return
 
+def new( year1, month1, name2, authors, name1, data, cate, url, clean_6):
+    fw = open('C:\\Users\\Та\\Desktop\\mystem-3.0-win7-64bit\\Paper\\plain\\' + year1 + '\\'+ month1 + '\\' + name2 + '.txt', 'w', encoding='utf-8')
+    fw.write('@au ' + authors + '\n' + '@ti ' + name1 + '\n' + '@da ' + data + '\n' + '@topic ' + cate + '\n' + '@url ' + url + '\n' + clean_6)
+    fw.close()
+    return fw
+
 def download_page(pageUrl):
     try:
         page = urllib.request.urlopen(pageUrl)
@@ -172,11 +168,11 @@ def download_page(pageUrl):
     l= link(html)
     s = searchingtext(html)
     cl = cleaning(s)
-    ad = addinformation(cl, d2, a, n, c, l)
-    fl = filecreator(d, d1, ad, n1)
+    fl = filecreator(d, d1, n1, cl)
     cs = csvfile( d, d1, n1, a, n, d2, c, l)
     my1 = mystemxml( d, d1)
     my2 = mystemtxt( d, d1)
+    nw = new( d, d1, n1, a, n, d2, c, l, cl)
 
 def fk():
     commonUrl = 'http://www.noviput.info/stati/'
