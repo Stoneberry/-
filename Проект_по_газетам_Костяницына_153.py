@@ -153,28 +153,28 @@ def download_page(pageUrl):
         html = page.read().decode('utf-8')
     except:
         print('Error at', pageUrl)
-        return
-    d = year(html)
-    d1 = month(html)
-    d2 = date(html)
-    a = author(html)
-    n = name(html)
-    n1 = engname(html)
-    c = categoria(html)
-    l= link(html)
-    s = searchingtext(html)
-    cl = cleaning(s)
-    fl = filecreator(d, d1, n1, cl)
-    my1 = mystemxml( d, d1)
-    my2 = mystemtxt( d, d1)
-    cs = csvfile( d, d1, n1, a, n, d2, c, l)
+    return html
 
 def fk():
     commonUrl = 'http://www.noviput.info/stati/'
-    for i in range(4500, 5088): # - иначе получалось очень много статей, компьютер работал 2 дня и сильно перегрелся, поэтому я урезала число статей.
+    for i in range(4500, 4506): # - иначе получалось очень много статей, компьютер работал 2 дня и сильно перегрелся, поэтому я урезала число статей.
         pageUrl = commonUrl + str(i)
         a = download_page(pageUrl)
-    return a
+        d = year(a)
+        d1 = month(a)
+        d2 = date(a)
+        a1 = author(a)
+        n = name(a)
+        n1 = engname(a)
+        c = categoria(a)
+        l= link(a)
+        s = searchingtext(a)
+        cl = cleaning(s)
+        fl = filecreator(d, d1, n1, cl)
+        my1 = mystemxml( d, d1)
+        my2 = mystemtxt( d, d1)
+        cs = csvfile( d, d1, n1, a1, n, d2, c, l)
+    return cs
 
 if __name__=='__main__':
     create()
