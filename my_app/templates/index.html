@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">	<title>Анкета для проекту</title>
+	<style type="text/css">
+	
+   	   body {
+   	   background: url("static/paper.jpg"); 
+   	   margin: 7%;
+   }
+		p {color: grey; font-family: Arial; font-size: 150%}
+		p1 { font-family: Arial; font-size: 100%}
+		p2 { font-family: Arial; font-size: 70%}
+	
+	}
+   	   div {
+    width: 100px; height: 100px; /* Размеры */
+    background: #fc0; /* Цвет фона */
+    border: 3px solid #fff; /* Белая рамка */
+    border-radius: 10px; /* Радиус скругления */
+    display: inline-block;
+   }
+   div:hover {
+    outline: 2px solid #000; /* Чёрная рамка */
+   }
+	</style>
+</head>
+<body>
+	<ul>
+    {% for name, url in urls.items() %}
+    <li><a href="{{ url }}">{{ name }}</a></li>
+    {% endfor %}
+	</ul>
+	<center><h1>Анкета для проекта по Лексической типологии</h1></center>
+	<form method="GET" action='/'>
+	    <center><h1>Глаголы движения в польском языке<h1></center>
+    	<center><h2>Заполните, пожалуйста, пропуски на русском<Br><h2></center>
+    	<p1>Как вас зовут? <input type="text" name="username" value="" placeholder="Ввод"><Br><p1>
+    	<p1>Сколько вам лет?<Br></p1>
+    	<input type="checkbox" name="age" value="kid">1-15<Br>
+		<input type="checkbox" name="age" value="young">15-25<Br>
+		<input type="checkbox" name="age" value="adult">25-40<Br>
+		<input type="checkbox" name="age" value="grand">40 и более<Br>
+		<p1>Какой ваш первый язык?<input type="text" name="language" value="" placeholder="Ввод"><Br><p1>	
+    	<center><h2>Заполните, пожалуйста, пропуски на польском языке<Br><h2></center>
+    	<p2>*Глаголы должны стоять в инфинитиве<Br></p2>
+    	<p1>Пример: Держать на руках - <b>trzymać w ramionach<b><Br></p1>
+    	</p1><img src="static/noga6.jpg" alt="child" class="logo" width="184" height="190"><Br></p2>
+    	<p2>1.<Br></p1><img src="static/noga1.jpg" alt="noga na nogu" class="logo" width="184" height="190"></p2>
+    	<input type="text" name="nogananogu" value="" placeholder="Ввод"><Br>
+    	<p2>2.<Br></p1><img src="static/noga2.jpg" alt="poturezki" class="logo" width="184" height="190"></p2>
+    	<input type="text" name="poturezki" value="" placeholder="Ввод"><Br>
+    	<p2>3.<Br></p1><img src="static/noga3.jpg" alt="na tsipochki" class="logo" width="184" height="190"></p2>
+    	<input type="text" name="natsipochki" value="" placeholder="Ввод"><Br>
+    	<p2>4.<Br></p1><img src="static/noga4.jpg" alt="podniat ruku" class="logo" width="184" height="190"></p2>
+    	<input type="text" name="podniatruku" value="" placeholder="Ввод"><Br>
+    	<p2>5.<Br></p1><img src="static/noga5.jpg" alt="operet litso" class="logo" width="184" height="190"></p2>
+    	<input type="text" name="operetlitso" value="" placeholder="Ввод"><Br>	
+    	<input type="submit" value="Отправить"><Br>	
+    </form>
+</body>
+</html>

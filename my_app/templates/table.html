@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">	<title>Статистика</title>
+    <style>
+     body {
+     	margin: 5%;
+        background: url("static/dragon.jpg") right bottom no-repeat; 
+        }
+    
+    table {
+    width: 700px; /* Ширина таблицы */
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    border: 5px groove #ccc; /* Рамка вокруг таблицы */
+   }
+   TH {
+    background: #EEA2AD; /* Цвет фона */
+    color: #363636; /* Цвет текста */
+   }
+   TD, TH {
+    padding: 3px; /* Поля вокруг содержимого ячеек */
+    border: 5px groove #ccc /* Граница между ячейками */
+   }
+    </style>
+</head>
+<body>
+	<ul>
+    {% for name, url in urls.items() %}
+    <li><a href="{{ url }}">{{ name }}</a></li>
+    {% endfor %}
+	</ul>
+  <p><table width="100%" border="1" cellspacing="0" cellpadding="4">
+   <center><h1>Статистика<h1></center>
+   <caption>Посещение сайта</caption>
+   <tr><td>Кол-во пользователей</td><td>{{number}}</td></tr>
+  </table></p>
+  <table border="1">
+   <caption>Возрастные категории</caption>
+   <tr><th>Возрастная категория</th><th>Кол-во пользователей</th></tr>
+   <tr><td>1-15</td><td>{{kid}}</td></tr>
+   <tr><td>15-25</td><td>{{young}}</td></tr>
+   <tr><td>25-40</td><td>{{adult}}</td></tr>
+   <tr><td>40 и более</td><td>{{grand}}</td></tr>
+   </table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Поиск</title>
+    <style>
+     body {
+     	margin: 5%;
+     	 background: url("static/waldo.jpg") right bottom no-repeat; 
+        }
+   div {
+    width: 300px; height: 100px; /* Размеры */
+    background: #fc0; /* Цвет фона */
+    border: 5px solid #fff; /* Белая рамка */
+    border-radius: 10px; /* Радиус скругления */
+    display: inline-block;
+   }
+   div:hover {
+    outline: 10px solid #000; /* Чёрная рамка */
+   }
+   p1 { font-family: Arial; font-size: 120%}
+  </style>
+ </head>
+ <body>
+ 	<ul>
+    {% for name, url in urls.items() %}
+    <li><a href="{{ url }}">{{ name }}</a></li>
+    {% endfor %}
+	</ul>
+  <form action='/result'>
+   <center><h1>Поиск по анкете</h1><Br></center>
+   <center><h1>Варианты перевода на польский язык</h1><Br></center>
+   <center><p1>Введите глагол на русском языке</p1></center>
+   <center><p1>Пока поиск производится только по пяти глаголам:</p1></center>
+   <ol>{% for i in variant %}<li>{{ i}}</li>{% endfor %}</ol>
+   <center><p1>Пожалуйста, введите один из них:</p1></center>
+   <center><p><input type="search" name="word" placeholder="Поиск по анкете" size="40"></p></center>
+   <center><p><input type="submit" value="Найти"></p></center>
+  </form>
+ </body>
+</html>

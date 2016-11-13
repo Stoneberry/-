@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>Results</title>
+	<style>
+     body {
+     	margin: 7%;
+     	background: url("static/ball.jpg") bottom no-repeat;
+        }
+    </style>
+</head>
+<body>
+	<ul>
+    {% for name, url in urls.items() %}
+    <li><a href="{{ url }}">{{ name }}</a></li>
+    {% endfor %}
+	</ul>
+<center><h1>Результаты поиска</h1></center>
+<ol>
+{% for i in answer %}
+	<li>{{i}}</li>
+{% endfor %}
+</ol>
+</body>
+</html>
