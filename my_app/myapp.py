@@ -49,6 +49,10 @@ def search(word, slovar):
 
 @app.route('/')
 def index():
+    urls = {'Анкета': url_for('index'),
+            'Поиск по результатам': url_for('searching'),
+            'Статистика': url_for('table'),
+            'Json': url_for('son'),}
     d=[]
     if request.args:
         username = unquote(request.args['username'])
@@ -64,7 +68,7 @@ def index():
         a1 = apa(d, username, age, lang, nogananogu, poturezki, natsipochki, podniatruku, operetlitso)
         z = file(a1)
         return redirect(url_for('searching'))
-    return render_template('index2.html')
+    return render_template('index2.html', urls=urls)
 
 @app.route('/search')
 def searching():
