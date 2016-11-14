@@ -52,6 +52,8 @@ def index():
     d=[]
     if request.args:
         username = unquote(request.args['username'])
+        if username=='':
+            return redirect(url_for('index'))
         age = unquote(request.args['age'])
         lang = unquote(request.args['language'])
         nogananogu = unquote(request.args['nogananogu'])
