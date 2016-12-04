@@ -59,7 +59,7 @@ def mnog(zz):
         a2 = i.split('.')
         for l in a2:
             for word in l.split(' '):
-                word = word.strip('«»,.:;?!()—')
+                word = word.strip('«»",.:;?!()—')
                 a1.add(word)
     return a1
 
@@ -89,11 +89,15 @@ def newfile(a4, a5, a6):
     f = open('new11.txt', 'a', encoding = 'utf-8')
     for i in sorted(a4): # - 4 задание
         f.write(i+'\n')
-    for l in sorted(a5): # - 5 задание
-        f.write(l+'\n')
-    for k in sorted(a6): # - 6 задание
-        f.write(k+'\n')
     f.close()
+    f1 = open('new12.txt', 'a', encoding = 'utf-8')
+    for l in sorted(a5): # - 5 задание
+        f1.write(l+'\n')
+    f1.close()
+    f2 = open('new13.txt', 'a', encoding = 'utf-8')
+    for k in sorted(a6): # - 6 задание
+        f2.write(k+'\n')
+    f2.close()
     return
 
 def fil():
