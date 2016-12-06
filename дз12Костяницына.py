@@ -26,7 +26,6 @@ def chastota1(zz):
         a2 = i.split('.')
         for l in a2:
             l = l.lower()
-            print(l)
             for word in l.split(' '):
                 word = word.strip('"«»,.:;?!()—')
                 if word in d:
