@@ -1,0 +1,92 @@
+# insert into tokens values ("56", "моря", "море", "1", "2")
+# id token sent_num token_num id_из_2_таблицы
+
+# этот код нужно запускать вторым
+
+import re
+
+def opening():
+    f = open('/Users/Stoneberry/Desktop/Университет/Прога/Pushkin_in/Pushkin.txt', 'r', encoding = 'utf-8')
+    lines = f.readlines()
+    f.close
+    return lines # - строки
+
+def wordes(lines): 
+    a3 = set()
+    znaki = '!@#$%^&*()-?><"":;.,/\|~`'
+    for i in lines:
+        a1 = i.split(' ')
+        for l in a1:
+            l = l.strip('\n')
+            y = l[-1]
+            if y in znaki:
+                l = l.strip(znaki)
+                a3.add(l)
+                a3.add(y)
+            else:
+                l = l.strip(znaki)
+                a3.add(l)
+    a = []
+    for word in a3:
+        a.append(word)
+    return a # - массив всех слов
+
+def sent_num(lines, word):
+    for i in range(len(lines)):
+        if word in lines[i]:
+             return i
+        else:
+            continue
+    return
+
+def token_num(lines, word):
+    znaki = '!@#$%^&*()-?><"":;.,/\|~`'
+    for sent in lines:# - одна строчка
+        a0 = sent.split(' ')
+        a1 = []
+        for i in a0:
+            i = i.strip('\n')
+            y = i[-1]
+            if y in znaki:
+                i = i.strip(znaki)
+                a1.append(i)
+                a1.append(y)
+            else:
+                i = i.strip(znaki)
+                a1.append(i)
+        for num in range(len(a1)):
+            if word==a1[num]:
+                return num
+            else:
+                continue
+    return
+
+def id_from_2(word):
+    f = open('Insert.txt', 'r', encoding = 'utf-8')
+    text = f.read()
+    f.close()
+    reg = '"([0-9]*?)", "(.*?)", ".*?", "[0-1]"'
+    ids = re.findall(reg, text)
+    for i in ids:
+        if word==i[1]:
+            return i[0]
+        else:
+            continue
+
+def new_file(a, lines):
+    f = open('Insert.txt', 'a', encoding = 'utf-8')
+    for i in range(len(a)):
+        a1 = a[i].lower()
+        f.write('insert into Text values' + '('+ '"' + str(i) + '"' + ', ' + '"' + a[i] + '"' + ', ' + '"'+ str(sent_num(lines, a[i])) + '"' + ', ' + '"'+ str(token_num(lines, a[i])) + '", "' + id_from_2(a1) + '")'+ '\n')
+    f.close()
+    return
+
+def final():
+    a1 = opening()
+    a3 = wordes(a1)
+    a4 = new_file(a3, a1)
+    return 
+
+if __name__=='__main__':
+    final()
+    
