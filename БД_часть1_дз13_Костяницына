@@ -1,0 +1,75 @@
+# - id токен лемма тип(1- если слово, 0 - если знак)
+# insert into tokens values ("56", "моря", "море", "1")
+
+# этот код нужно запускать первым
+
+import os
+import re
+
+def mystem(): #- полный путь, потому что относительный не работал
+    inp = "/Users/Stoneberry/Desktop/Университет/Прога/Pushkin_in"
+    lst = os.listdir(inp)
+    for fl in lst:
+        os.system("/Users/Stoneberry/Desktop/Университет/Прога/mystem " + inp + os.sep + fl + " /Users/Stoneberry/Desktop/Университет/Прога/Pushkin_out" + os.sep + fl + " -cnd --format text")
+    return
+
+def opening():
+    f = open('Pushkin_out/Pushkin.txt', 'r', encoding = 'utf-8')
+    lines1 = f.readlines()
+    f.close()
+    lines2 = set()
+    for i in lines1:
+        i = i.strip('\n\\n_')
+        if i=='':
+            continue
+        else:
+            lines2.add(i)
+    lines = []
+    for i in lines2:
+        i = i.lower()
+        lines.append(i)
+    return lines
+
+def word(line):
+    reg = '(.*?){.*?}'
+    znaki = '!@#$%^&*()-?><"":;.,/\|~`'
+    if line in znaki:
+        a = []
+        a.append(line)
+    else:
+        a = re.findall(reg, line)
+    return a[0]
+
+def lemma(line):
+    reg = '.*?{(.*?)}'
+    znaki = '!@#$%^&*()-?><"":;.,/\|~`'
+    if line in znaki:
+        a = []
+        a.append(line)
+    else:
+        a = re.findall(reg, line)
+    return a[0]
+
+def tip(word):
+    znaki = '!@#$%^&*()-?><"":;.,/\|~`'
+    if word in znaki:
+        return '0'
+    else:
+        return '1'
+
+def new_file(lines):
+    f = open('Insert.txt', 'a', encoding = 'utf-8')
+    for i in range(len(lines)):
+        f.write('insert into Tokens values ("' + str(i)+ '", "' + word(lines[i]) + '", "' + lemma(lines[i]) + '", "' + tip( word(lines[i])) + '")' + '\n')
+    f.close()
+    return
+
+def final():
+    a1 = mystem()
+    a2 = opening()
+    a3 = new_file(a2)
+    return
+
+if __name__=='__main__':
+    final()
+    
