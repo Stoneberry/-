@@ -13,7 +13,7 @@ def opening2():
     f.close()
     words = []
     for i in words1:
-        i = i.strip('\n')
+        i = i.strip('\n\\n')
         if i!='':
             words.append(i)
         else:
