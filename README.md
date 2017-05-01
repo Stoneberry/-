@@ -1,1 +1,1 @@
-https://www.dropbox.com/home?preview=Paper.7z
+Чатбот для Телеграма лежит в отдельном репрезентории ("Telegram")
