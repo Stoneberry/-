@@ -43,7 +43,7 @@ def download_comments(post_id):
                 comments.append(text)
     return comments 
 
-##def download_comments2(post_id):
+##def download_comments2(post_id):  # просто показать, что я понимаю, как скачивать большее кол-во коментариев, но в этом нет необходимости
 ##    link = 'http://api.vk.com/method/'
 ##    owner_id = '-31513532'
 ##    count = '100' 
