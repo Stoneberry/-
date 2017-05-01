@@ -42,6 +42,23 @@ def download_comments(post_id):
                 text = re.sub('<br>', '', i["text"]) # - строка
                 comments.append(text)
     return comments 
+
+##def download_comments2(post_id):
+##    link = 'http://api.vk.com/method/'
+##    owner_id = '-31513532'
+##    count = '100' 
+##    offset = '101'
+##    link+='wall.getComments?owner_id={}&post_id={}&count={}&offset={}'.format(owner_id, post_id, count, offset)
+##    response = requests.get(link)
+##    data = json.loads(response.text)
+##    z = data['response']
+##    comments = []
+##    if z != [0]:
+##        for i in z:
+##            if type(i)==dict:
+##                text = re.sub('<br>', '', i["text"]) # - строка
+##                comments.append(text)
+##    return comments 
     
 def post_ids(y):
     info = {} # - ключ - id, значение - [текст, [коментарии], id автора]
