@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>VK Search</title>
+  <style type="text/css">
+  	.block1 { 
+	background-image: url("static/vk.jpg");
+    background: #4f6e9b;
+    box-shadow: 0 0 5px #777777;
+    padding: 15px;
+    color: #f4f5f7;
+    }
+    body {
+    background: #e0e2e5;
+    }
+    * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+ 
+.conteiner1 {
+	background: #fcfcfc;
+	box-shadow: 0 0 5px #777777;
+	border: 1px solid #cecccc;
+	min-height: 500px;
+	margin: 15px;
+	width: 50%;
+}
+
+
+p {
+	background: #CCE79F;
+	border: 1px solid #CCE79F;
+	display: block;
+	left: -1px;
+	padding: 8px 11px;
+	position: relative;
+	width: 90%;
+	z-index: 2;
+}
+
+h1 {
+	 font-style: normal;
+	 font-weight: normal;
+	 margin: 5px;
+	 font-size: 30px;
+	 margin: 15px;
+}
+
+h2 { font-style: normal;
+	 font-weight: normal;
+	 margin: 5px;
+	 font-size: 15px;
+}
+    </style>
+  </head>
+ <body>
+  <div class="block1"><center>Поиск в социально	сети VK.com</div> 
+  <center><div class="conteiner1"><h1><center>Ошибка</center></h1>
+  <ul>
+    {% for name, url in urls.items() %}
+    <a href="{{ url }}">{{ name }}</a>
+    {% endfor %}
+	</ul>
+	<h2>Пожалуйста, воспользуйтесь сайтом позже.</h2>
+  </p1><center><img src="{{url_for('static', filename='logo_vk.png')}}" width="400" height="400" /></center></p1></div>
+ </body>
+</html>

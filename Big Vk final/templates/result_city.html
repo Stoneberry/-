@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>VK Search</title>
+ <style type="text/css">
+	.block1 { 
+	background-image: url("static/vk.jpg");
+    background: #4f6e9b;
+    box-shadow: 0 0 5px #777777;
+    padding: 15px;
+    color: #f4f5f7;
+    }
+    body {
+    background: #e0e2e5;
+    }
+    * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+    
+   .conteiner1 {
+	background: #ffffff;
+	box-shadow: 0 0 5px #777777;
+	border: 1px solid #cecccc;
+	min-height: 700px;
+	margin: 15px;
+	width: 705px;
+} 
+
+h1 {
+	 font-style: normal;
+	 font-weight: normal;
+	 margin: 5px;
+	 font-size: 30px;
+	 margin: 15px;
+}
+
+h2 { font-style: normal;
+	 font-weight: normal;
+	 margin: 5px;
+	 font-size:25px;
+}
+    
+  </style>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+   google.load("visualization", "1", {packages:["corechart"]});
+   google.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['VK.com', 'Кол-во'],
+    {% for i in date%}
+    ['{{i}}', {{date[i]}}],
+    {% endfor %}]);
+    var options = {
+     title: 'Употребление за последнее время',
+     hAxis: {title: 'Город'},
+     vAxis: {title: 'Кол-во'}
+    };
+    var chart = new google.visualization.ColumnChart(document.getElementById('oil'));
+    chart.draw(data, options);
+   }
+  </script>
+  </head>
+ <body>
+  <div class="block1"><center>Статистика</div>  
+  <center><div class="conteiner1"  id="oil" style="width: 500px; height: 400px;">
+  </div>
+   <ul>
+    {% for name, url in urls.items() %}
+    <h2><a href="{{ url }}">{{ name }}</a></h2>
+    {% endfor %}
+	</ul>
+ </body>
+</html>
